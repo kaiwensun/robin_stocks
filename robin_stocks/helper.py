@@ -251,6 +251,10 @@ def request_post(url,payload=None,timeout=16):
         res.raise_for_status()
         data = res.json()
     except (requests.exceptions.HTTPError,AttributeError) as message:
+        try:
+            print("HTTPError: {}".format(data))
+        except:
+            print("HTTPError: [fail to print resp.json()]")
         data = None
         print(message)
 
